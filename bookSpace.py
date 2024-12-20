@@ -34,9 +34,7 @@ def get_books(search_title=None, search_author=None, search_category=None):
 
     finally:
         # Close the connection and cursor to avoid memory leaks
-        if connection.is_connected():
-            cursor.close()
-            connection.close()
+       pass
 
 # Streamlit app layout
 st.title("BookSpace")
