@@ -3,38 +3,31 @@ import streamlit as st
 
 # Function to retrieve books based on search criteria
 def get_books(search_title=None, search_author=None, search_category=None):
-    try:
-        # Connect to MySQL database
-        connection = st.connection("sql")
-        # Create a cursor object to interact with the database
-        cursor = connection.cursor()
 
-        # Base query
-        query = "SELECT book_id, book_title, book_authors, categories, year FROM book_details WHERE 1=1"
+    # Connect to MySQL database
+    connection = st.connection("sql")
+    # Create a cursor object to interact with the database
+    cursor = connection.cursor()
 
-        # Add conditions to the query based on search input
-        if search_title:
-            query += f" AND book_title LIKE '%{search_title}%'"
-        if search_author:
-            query += f" AND book_authors LIKE '%{search_author}%'"
-        if search_category:
-            query += f" AND categories LIKE '%{search_category}%'"
+    # Base query
+    query = "SELECT book_id, book_title, book_authors, categories, year FROM book_details WHERE 1=1"
 
-        # Execute the query
-        cursor.execute(query)
+    # Add conditions to the query based on search input
+    if search_title:
+        query += f" AND book_title LIKE '%{search_title}%'"
+    if search_author:
+        query += f" AND book_authors LIKE '%{search_author}%'"
+    if search_category:
+        query += f" AND categories LIKE '%{search_category}%'"
 
-        # Fetch all the results from the query
-        books = cursor.fetchall()
+    # Execute the query
+    cursor.execute(query)
 
-        return books
+    # Fetch all the results from the query
+    books = cursor.fetchall()
 
-    except mysql.connector.Error as err:
-        st.error(f"Error: {err}")
-        return []
+    return books
 
-    finally:
-        # Close the connection and cursor to avoid memory leaks
-       pass
 
 # Streamlit app layout
 st.title("BookSpace")
