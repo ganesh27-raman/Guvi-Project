@@ -5,14 +5,7 @@ import mysql.connector
 def get_books(search_title=None, search_author=None, search_category=None):
     try:
         # Connect to MySQL database
-        connection = mysql.connector.connect(
-            host="localhost",  
-            port=3306,
-            user="root", 
-            password="Raghu@1127",
-            database="bookspace"
-        )
-
+        connection = st.connection("sql")
         # Create a cursor object to interact with the database
         cursor = connection.cursor()
 
