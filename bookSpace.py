@@ -1,5 +1,5 @@
 import streamlit as st
-import mysql.connector
+
 
 # Function to retrieve books based on search criteria
 def get_books(search_title=None, search_author=None, search_category=None):
