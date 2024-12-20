@@ -5,7 +5,7 @@ import streamlit as st
 def get_books(search_title=None, search_author=None, search_category=None):
 
     # Connect to MySQL database
-    connection = st.connection("sql")
+    connection = st.connection('mysql', type='sql')
     # Create a cursor object to interact with the database
     cursor = connection.cursor()
 
