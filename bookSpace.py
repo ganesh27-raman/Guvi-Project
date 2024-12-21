@@ -5,7 +5,13 @@ import streamlit as st
 def get_books(search_title=None, search_author=None, search_category=None):
 
     # Connect to MySQL database
-    connection = st.connection('mysql', type='sql')
+    connection = mysql.connector.connect(
+            host="gateway01.ap-southeast-1.prod.aws.tidbcloud.com",  
+            port=4000,
+            user="3tN77YkdrSS9WKK.root", 
+            password="Eufk68BdWytW0E6w",
+            database="bookspace"
+        )
     # Create a cursor object to interact with the database
     cursor = connection.cursor()
 
